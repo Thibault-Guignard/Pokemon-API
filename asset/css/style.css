@@ -185,3 +185,88 @@ img {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
+
+.list__type {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1em;
+}
+
+.type__pokemon {
+    color: white;
+    border-radius: 15px;
+    font-size: bold;
+    margin-right: 1em;
+}
+
+.type__pokemon--Acier {
+    background-color: #aaaabb;
+}
+
+.type__pokemon--Combat {
+    background-color: #bb5544;
+}
+
+.type__pokemon--Dragon {
+    background-color: #7766ee;
+}
+
+.type__pokemon--Eau {
+    background-color: #3399ff;
+}
+
+.type__pokemon--Électrik {
+    background-color: #ffbb33;
+}
+
+.type__pokemon--Fée {
+    background-color: #ff80ed;
+}
+
+.type__pokemon--Feu {
+    background-color: #ff4422;
+}
+
+.type__pokemon--Glace {
+    background-color: #77ddff;
+}
+
+.type__pokemon--Insecte {
+    background-color: #aabb22;
+}
+
+.type__pokemon--Normal {
+    background-color: #bbaabb;
+}
+
+.type__pokemon--Plante {
+    background-color: #77cc55;
+}
+
+.type__pokemon--Poison {
+    background-color: #7e22ff;
+}
+
+.type__pokemon--Psy {
+    background-color: #ff5599;
+}
+
+.type__pokemon--Roche {
+    background-color: #bbaa66;
+}
+
+.type__pokemon--Sol {
+    background-color: #ddbb55;
+}
+
+.type__pokemon--Spectre {
+    background-color: #6666bb;
+}
+
+.type__pokemon--Ténèbres {
+    background-color: #665544;
+}
+
+.type__pokemon--Vol {
+    background-color: #6699ff;
+}

@@ -24,8 +24,7 @@ const filter = {
     },
 
     handleClickTypePokemon: function(event) {
-        console.log('handle click')
-        const typeSelected = event.target.dataset.type;
+        const typeSelected = event.target.textContent;
         filter.loadedPokemonByOneType(typeSelected)
     },
 

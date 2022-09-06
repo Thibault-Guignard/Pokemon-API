@@ -60,7 +60,7 @@ const pokemon = {
 
     createPokemonType: function(pokemonFragment , onePokemon) {
         //on recupere la div dans laquelle on va mettre les types
-        const divType = pokemonFragment.querySelector('.type__pokemon')
+        const divType = pokemonFragment.querySelector('.list__type')
         //on boucle sur les types d'un pokemon donné
         for(const listType of onePokemon.apiTypes) {
             //on crée notre nouvel element a 
@@ -68,13 +68,10 @@ const pokemon = {
             //on lui rajoute en ref l'id du type
             newTypeFragementPokemon.href = "#";
             //on ajoute la classe pour gere le CSS
-            newTypeFragementPokemon.classList.add('type__pokemon--name');
-            //on ajoute la couleur du type en fond
-            newTypeFragementPokemon.style.backgroundColor = '#'+ listType.color;
+            const typesPokemon = ['type__pokemon','type__pokemon--' + listType.name];
+            newTypeFragementPokemon.classList.add(...typesPokemon);
             //on lui donne en valeur le nom du type
             newTypeFragementPokemon.textContent = listType.name;
-            //on lui donne en dataset l'id du type
-            //newTypeFragementPokemon.dataset.type=listType.id;
             //on lui rajoute un evenement
             filter.addOnePokemonEvent(newTypeFragementPokemon);
             //on le place dans la div
