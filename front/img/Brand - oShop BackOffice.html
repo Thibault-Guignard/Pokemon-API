@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://localhost:8080/brand/list -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Brand - oShop BackOffice</title>
+
+    <!-- Getting bootstrap (and reboot.css) -->
+    <link href="./Brand - oShop BackOffice_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--
+        And getting Font Awesome 4.7 (free)
+        To get HTML code icons : https://fontawesome.com/v4.7.0/icons/
+    -->
+    <link rel="stylesheet" href="./Brand - oShop BackOffice_files/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+
+    <!-- We can still have our own CSS file -->
+    <link rel="stylesheet" href="./Brand - oShop BackOffice_files/style.css">
+</head>
+
+<body> 
+
+
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="http://localhost:8080/">oShop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link " href="http://localhost:8080/">Accueil <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="http://localhost:8080/category/list">Catégories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="http://localhost:8080/product/list">Produits</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="http://localhost:8080/type/list">Types</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  active" href="http://localhost:8080/brand/list">Marques</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/brand/list#">Tags</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/brand/list#">Sélections Accueil &amp; Footer</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container my-4">
+
+<a href="http://localhost:8080/type/add" class="btn btn-success float-end">Ajouter</a>
+<h2>Liste des types</h2>
+<br><font size="1"></font><table class="table table-hover mt-4">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>           
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+</tbody></table><table class="xdebug-error xe-notice" dir="ltr" border="1" cellspacing="0" cellpadding="1">
+<tbody><tr><th align="left" bgcolor="#f57900" colspan="5"><span style="background-color: #cc0000; color: #fce94f; font-size: x-large;">( ! )</span> Notice: Undefined variable: type_list in /var/www/html/S06/S06-oShop-Thibault-Guignard/app/views/brand/list.tpl.php on line <i>12</i></th></tr>
+<tr><th align="left" bgcolor="#e9b96e" colspan="5">Call Stack</th></tr>
+<tr><th align="center" bgcolor="#eeeeec">#</th><th align="left" bgcolor="#eeeeec">Time</th><th align="left" bgcolor="#eeeeec">Memory</th><th align="left" bgcolor="#eeeeec">Function</th><th align="left" bgcolor="#eeeeec">Location</th></tr>
+<tr><td bgcolor="#eeeeec" align="center">1</td><td bgcolor="#eeeeec" align="center">0.0000</td><td bgcolor="#eeeeec" align="right">356488</td><td bgcolor="#eeeeec">{main}(  )</td><td title="/var/www/html/S06/S06-oShop-Thibault-Guignard/public/index.php" bgcolor="#eeeeec">.../index.php<b>:</b>0</td></tr>
+<tr><td bgcolor="#eeeeec" align="center">2</td><td bgcolor="#eeeeec" align="center">0.0003</td><td bgcolor="#eeeeec" align="right">374144</td><td bgcolor="#eeeeec">Dispatcher-&gt;dispatch(  )</td><td title="/var/www/html/S06/S06-oShop-Thibault-Guignard/public/index.php" bgcolor="#eeeeec">.../index.php<b>:</b>311</td></tr>
+<tr><td bgcolor="#eeeeec" align="center">3</td><td bgcolor="#eeeeec" align="center">0.0003</td><td bgcolor="#eeeeec" align="right">374504</td><td bgcolor="#eeeeec">App\Controllers\BrandController-&gt;list(  )</td><td title="/var/www/html/S06/S06-oShop-Thibault-Guignard/vendor/benoclock/alto-dispatcher/Dispatcher.php" bgcolor="#eeeeec">.../Dispatcher.php<b>:</b>127</td></tr>
+<tr><td bgcolor="#eeeeec" align="center">4</td><td bgcolor="#eeeeec" align="center">0.0009</td><td bgcolor="#eeeeec" align="right">422928</td><td bgcolor="#eeeeec">App\Controllers\BrandController-&gt;show(  )</td><td title="/var/www/html/S06/S06-oShop-Thibault-Guignard/app/Controllers/BrandController.php" bgcolor="#eeeeec">.../BrandController.php<b>:</b>17</td></tr>
+<tr><td bgcolor="#eeeeec" align="center">5</td><td bgcolor="#eeeeec" align="center">0.0010</td><td bgcolor="#eeeeec" align="right">424056</td><td bgcolor="#eeeeec">require_once( <font color="#00bb00">'/var/www/html/S06/S06-oShop-Thibault-Guignard/app/views/brand/list.tpl.php'</font> )</td><td title="/var/www/html/S06/S06-oShop-Thibault-Guignard/app/Controllers/CoreController.php" bgcolor="#eeeeec">.../CoreController.php<b>:</b>41</td></tr>
+</tbody></table>
+<br>
+<font size="1"><table class="xdebug-error xe-warning" dir="ltr" border="1" cellspacing="0" cellpadding="1">
+<tbody><tr><th align="left" bgcolor="#f57900" colspan="5"><span style="background-color: #cc0000; color: #fce94f; font-size: x-large;">( ! )</span> Warning: Invalid argument supplied for foreach() in /var/www/html/S06/S06-oShop-Thibault-Guignard/app/views/brand/list.tpl.php on line <i>12</i></th></tr>
+<tr><th align="left" bgcolor="#e9b96e" colspan="5">Call Stack</th></tr>
+<tr><th align="center" bgcolor="#eeeeec">#</th><th align="left" bgcolor="#eeeeec">Time</th><th align="left" bgcolor="#eeeeec">Memory</th><th align="left" bgcolor="#eeeeec">Function</th><th align="left" bgcolor="#eeeeec">Location</th></tr>
+<tr><td bgcolor="#eeeeec" align="center">1</td><td bgcolor="#eeeeec" align="center">0.0000</td><td bgcolor="#eeeeec" align="right">356488</td><td bgcolor="#eeeeec">{main}(  )</td><td title="/var/www/html/S06/S06-oShop-Thibault-Guignard/public/index.php" bgcolor="#eeeeec">.../index.php<b>:</b>0</td></tr>
+<tr><td bgcolor="#eeeeec" align="center">2</td><td bgcolor="#eeeeec" align="center">0.0003</td><td bgcolor="#eeeeec" align="right">374144</td><td bgcolor="#eeeeec">Dispatcher-&gt;dispatch(  )</td><td title="/var/www/html/S06/S06-oShop-Thibault-Guignard/public/index.php" bgcolor="#eeeeec">.../index.php<b>:</b>311</td></tr>
+<tr><td bgcolor="#eeeeec" align="center">3</td><td bgcolor="#eeeeec" align="center">0.0003</td><td bgcolor="#eeeeec" align="right">374504</td><td bgcolor="#eeeeec">App\Controllers\BrandController-&gt;list(  )</td><td title="/var/www/html/S06/S06-oShop-Thibault-Guignard/vendor/benoclock/alto-dispatcher/Dispatcher.php" bgcolor="#eeeeec">.../Dispatcher.php<b>:</b>127</td></tr>
+<tr><td bgcolor="#eeeeec" align="center">4</td><td bgcolor="#eeeeec" align="center">0.0009</td><td bgcolor="#eeeeec" align="right">422928</td><td bgcolor="#eeeeec">App\Controllers\BrandController-&gt;show(  )</td><td title="/var/www/html/S06/S06-oShop-Thibault-Guignard/app/Controllers/BrandController.php" bgcolor="#eeeeec">.../BrandController.php<b>:</b>17</td></tr>
+<tr><td bgcolor="#eeeeec" align="center">5</td><td bgcolor="#eeeeec" align="center">0.0010</td><td bgcolor="#eeeeec" align="right">424056</td><td bgcolor="#eeeeec">require_once( <font color="#00bb00">'/var/www/html/S06/S06-oShop-Thibault-Guignard/app/views/brand/list.tpl.php'</font> )</td><td title="/var/www/html/S06/S06-oShop-Thibault-Guignard/app/Controllers/CoreController.php" bgcolor="#eeeeec">.../CoreController.php<b>:</b>41</td></tr>
+</tbody></table></font>
+    
+        </div>
+ <!-- And for every user interaction, we import Bootstrap JS components -->
+    <script src="./Brand - oShop BackOffice_files/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+
+</body></html>
