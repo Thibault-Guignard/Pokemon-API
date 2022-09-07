@@ -16,16 +16,15 @@ const filter = {
 
     //gestion du choix dans le menu select
     handleSelectPokemonByType: function(event) {
-        //on recupere la valeur de l'option choisie qui est le nom de notre type
         const optionSelected = event.target.value;
         if (optionSelected != "Tri par type")  {
             filter.loadedPokemonByOneType(optionSelected);
         } else {
-            filter.handleSelectAllPokemon();
+            filter.handleSelectAllPokemon(event);
         }
     },
 
-    //click sur le bouton tous les pokemon
+    //click sur le bouton type d'un pokemon
     handleClickTypePokemon: function(event) {
         const typeSelected = event.target.textContent;
         filter.loadedPokemonByOneType(typeSelected)
@@ -48,9 +47,8 @@ const filter = {
                 return response.json();
             }
         )
-        .then( // le deuxième .then() va nous permettre de faire quelque chose avec cette réponse
+        .then( 
             function(jsonResponse) {
-                //on envoie les données recues dans une fonction qui va créer le menu select dans la bar de nav
                 filter.displayPokemonType(jsonResponse);
             }
         )       
@@ -76,7 +74,8 @@ const filter = {
     },
 
 
-    handleSelectAllPokemon: function() {
+    handleSelectAllPokemon: function(event) {
+        event.preventDefault();
         filter.displayAllPokemon('block');
         filter.optionSelectedTypes('Tri par type');
     },

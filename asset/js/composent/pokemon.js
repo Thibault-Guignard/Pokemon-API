@@ -5,24 +5,22 @@ const pokemon = {
         pokemon.loadedPokemonInAPI();
     },
 
-    loadedPokemon: function() {
-        if ( null !== localStorage.getItem('pokemons')) {
-           const listPokemon = JSON.parse(localStorage.getItem('pokemons'));
-           pokemon.createUl(listPokemon);
-        } else {
-            pokemon.loadedPokemonInAPI();
-        }
-    },
+    //? sauvegarde
+    // loadedPokemon: function() {
+    //     if ( null !== localStorage.getItem('pokemons')) {
+    //        const listPokemon = JSON.parse(localStorage.getItem('pokemons'));
+    //        pokemon.createUl(listPokemon);
+    //     } else {
+    //         pokemon.loadedPokemonInAPI();
+    //     }
+    // },
 
     loadedPokemonInAPI : function() {
 
-        // définir les options
         let fetchOptions = {
-            method: 'GET', // La méthode HTTP (GET, POST, etc.)
+            method: 'GET',
             mode: 'cors',
             cache: 'no-cache'  
-            // Si on veut envoyer des données avec la requête => décommenter et remplacer data par le tableau de données
-            // , body : JSON.stringify(data)
         };
 
         request = fetch(app.apiRootUrl + '/pokemon', fetchOptions); 
@@ -32,7 +30,7 @@ const pokemon = {
                 return response.json();
             }
         )
-        .then( // le deuxième .then() va nous permettre de faire quelque chose avec cette réponse
+        .then(
             function(jsonResponse) {
                 pokemon.createUl(jsonResponse);
             }
@@ -40,8 +38,8 @@ const pokemon = {
     },
 
     createUl: function(pokemonList) {
-        //sauvegarde
-        //pokemon.saveInLocalStorage(pokemonList)
+        //?sauvegarde
+        //?pokemon.saveInLocalStorage(pokemonList)
         //on crée le ul parent a qui on va mettre la classe wrapper
         const ulListPokemon = document.createElement('ul');
         //on rajoute la class wrapper a cet Ul
@@ -92,7 +90,9 @@ const pokemon = {
         
     },
 
-    saveInLocalStorage: function(listPokemon) {
-        localStorage.setItem("pokemons",JSON.stringify(listPokemon));
-    }
+    // ? sauvegarde en storage
+    // saveInLocalStorage: function(listPokemon) {
+    //     localStorage.setItem("pokemons",JSON.stringify(listPokemon));
+    // }
+    
 }

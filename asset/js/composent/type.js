@@ -6,13 +6,10 @@ const type = {
     },
 
     loadedSelectType: function() {
-        // définir les options
         let fetchOptions = {
-            method: 'GET', // La méthode HTTP (GET, POST, etc.)
+            method: 'GET',
             mode: 'cors',
             cache: 'no-cache'  
-            // Si on veut envoyer des données avec la requête => décommenter et remplacer data par le tableau de données
-            // , body : JSON.stringify(data)
         };
 
         request = fetch(app.apiRootUrl + '/types', fetchOptions); 
@@ -22,7 +19,7 @@ const type = {
                 return response.json();
             }
         )
-        .then( // le deuxième .then() va nous permettre de faire quelque chose avec cette réponse
+        .then(
             function(jsonResponse) {
                 //on envoie les données recues dans une fonction qui va créer le menu select dans la bar de nav
                 type.createSelectTypeHeader(jsonResponse);
@@ -31,6 +28,8 @@ const type = {
     },
 
     createSelectTypeHeader: function(listType) {
+        //tri par orde alphabetique en fonction du nom du type
+        listType.sort((x,y) => x.name.localeCompare(y.name))
         //on recupere l'emplacement ou on va mettre notre select
         const selectTypes = document.querySelector('.sort--type');
         //on va créér les options
@@ -48,5 +47,5 @@ const type = {
         option.value = nameType;
         option.text = nameType;
         return option;
-    } ,
+    },
 }
