@@ -2,10 +2,20 @@
 const pokemon = {
 
     init : function() {
-        pokemon.loadedPokemon();
+        pokemon.loadedPokemonInAPI();
     },
 
-    loadedPokemon : function() {
+    loadedPokemon: function() {
+        if ( null !== localStorage.getItem('pokemons')) {
+           const listPokemon = JSON.parse(localStorage.getItem('pokemons'));
+           pokemon.createUl(listPokemon);
+        } else {
+            pokemon.loadedPokemonInAPI();
+        }
+    },
+
+    loadedPokemonInAPI : function() {
+
         // définir les options
         let fetchOptions = {
             method: 'GET', // La méthode HTTP (GET, POST, etc.)
@@ -30,6 +40,8 @@ const pokemon = {
     },
 
     createUl: function(pokemonList) {
+        //sauvegarde
+        //pokemon.saveInLocalStorage(pokemonList)
         //on crée le ul parent a qui on va mettre la classe wrapper
         const ulListPokemon = document.createElement('ul');
         //on rajoute la class wrapper a cet Ul
@@ -55,7 +67,7 @@ const pokemon = {
 
     createPokemonName: function(pokemonFragment, onePokemon) {
         const span = pokemonFragment.querySelector('span');
-        span.textContent = onePokemon.name;
+        span.textContent = onePokemon.pokedexId + '. ' + onePokemon.name;
     },
 
     createPokemonType: function(pokemonFragment , onePokemon) {
@@ -79,4 +91,8 @@ const pokemon = {
         }
         
     },
+
+    saveInLocalStorage: function(listPokemon) {
+        localStorage.setItem("pokemons",JSON.stringify(listPokemon));
+    }
 }

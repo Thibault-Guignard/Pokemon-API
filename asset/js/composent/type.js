@@ -34,18 +34,19 @@ const type = {
         //on recupere l'emplacement ou on va mettre notre select
         const selectTypes = document.querySelector('.sort--type');
         //on va créér les options
-        //d'abord la basisque
-        selectTypes.append(type.createOption('Tri par type'));
+        const defaultOptionTri = type.createOption('Tri par type');
+        defaultOptionTri.setAttribute('selected',true);
+        selectTypes.append(defaultOptionTri);
         //ensuite ceux recuperer via Fetch 
         for( const oneType of listType ) {
             selectTypes.append(type.createOption(oneType.name,oneType.id))
         }
     },
 
-    createOption : function(name , id = 0) { 
+    createOption : function(nameType) { 
         const option = document.createElement('option')
-        option.value = name;
-        option.text = name;;
+        option.value = nameType;
+        option.text = nameType;
         return option;
     } ,
 }
