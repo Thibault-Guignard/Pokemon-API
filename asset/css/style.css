@@ -88,7 +88,6 @@ img {
 .wrapper li a,
 .wrapperList li a {
   padding: 1rem;
-  display: block;
   text-decoration: none;
 }
 
@@ -111,7 +110,7 @@ img {
 }
 
 .wrapper .name {
-  font-size: 1.5em;
+  font-size: 1.6em;
   display: block;
   color: #e1adb5;
 }
@@ -210,17 +209,40 @@ img {
   }
 }
 
-.list__type {
+.detail {
   display: flex;
-  justify-content: center;
-  padding-bottom: 1em;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 }
 
-.type__pokemon {
+.generation {
+  background-color: #e1adb5;
+  text-align: center;
+  display: inline-block;
+  width: 8em;
+}
+
+.list__type {
+  display: flex;
+  justify-content: space-arround;
+  padding: 0.5em;
+}
+
+.type__pokemon,
+.generation {
   color: white;
   border-radius: 15px;
   font-size: bold;
-  margin-right: 1em;
+}
+
+.type__pokemon:hover,
+.generation:hover {
+  color: #982c2c;
+}
+
+.type__pokemon:nth-child(2n) {
+  margin-left: 1em;
 }
 
 .type__pokemon--Acier {
