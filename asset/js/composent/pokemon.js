@@ -50,6 +50,7 @@ const pokemon = {
             pokemon.createPokemonImage(pokemonFragment, onePokemon);
             pokemon.createPokemonName(pokemonFragment, onePokemon);
             pokemon.createPokemonType(pokemonFragment, onePokemon);
+            pokemon.createPokemonGenaration(pokemonFragment, onePokemon);
             ulListPokemon.append(pokemonFragment);            
         }
         const divParent = document.getElementById('display-all-pokemon')
@@ -70,13 +71,13 @@ const pokemon = {
 
     createPokemonType: function(pokemonFragment , onePokemon) {
         //on recupere la div dans laquelle on va mettre les types
-        const divType = pokemonFragment.querySelector('.list__type')
+        const divType = pokemonFragment.querySelector('.list__type');
         //on boucle sur les types d'un pokemon donné
         for(const listType of onePokemon.apiTypes) {
             //on crée notre nouvel element a 
             const newTypeFragementPokemon = document.createElement('a');
             //on lui rajoute en ref l'id du type
-            newTypeFragementPokemon.href = "#";
+            newTypeFragementPokemon.href = "";
             //on ajoute la classe pour gere le CSS
             const typesPokemon = ['type__pokemon','type__pokemon--' + listType.name];
             newTypeFragementPokemon.classList.add(...typesPokemon);
@@ -89,6 +90,13 @@ const pokemon = {
         }
         
     },
+
+    createPokemonGenaration: function(pokemonFragment, onePokemon) {
+        //on recupere le a dans laquelle on va préciser la genération du pokemon
+        const aGeneration = pokemonFragment.querySelector('.generation');
+        aGeneration.textContent = onePokemon.apiGeneration + "°  Génération"
+        aGeneration.dataset.generation = onePokemon.apiGeneration;
+    }
 
     // ? sauvegarde en storage
     // saveInLocalStorage: function(listPokemon) {
