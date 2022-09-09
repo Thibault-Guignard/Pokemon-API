@@ -86,7 +86,7 @@ const pokemon = {
             //on lui donne en valeur le nom du type
             newTypeFragementPokemon.textContent = listType.name;
             //on lui rajoute un evenement
-            filter.addOnePokemonEvent(newTypeFragementPokemon);
+            filter.addOnePokemonEventType(newTypeFragementPokemon);
             //on le place dans la div
             divType.append(newTypeFragementPokemon);
         }
@@ -98,6 +98,7 @@ const pokemon = {
         const aGeneration = pokemonFragment.querySelector('.generation');
         aGeneration.textContent = onePokemon.apiGeneration + "°  Génération"
         aGeneration.dataset.generation = onePokemon.apiGeneration;
+        filter.addOnePokemonEventGeneration(aGeneration);
     }
 
     // ? sauvegarde en storage

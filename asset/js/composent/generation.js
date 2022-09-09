@@ -8,9 +8,8 @@ const generation = {
         const numberOfGeneration = generation.findGenerationOfLastPokemon();
         //on recupere l'emplacement ou on va mettre notre select
         const selectGenerations = document.querySelector('.sort--generation');
-        console.log(selectGenerations)
         //on va créér les options
-        const defaultOptionTri = type.createOption('Tri par generation');
+        const defaultOptionTri = type.createOption('Tri par generation', 0);
         defaultOptionTri.setAttribute('selected',true);
         selectGenerations.append(defaultOptionTri);
         for (let g = 1; g <= numberOfGeneration; g++) {
