@@ -18,7 +18,7 @@ const filter = {
     handleSelectPokemonByType: function(event) {
         const optionSelected = event.target.value;
         if (optionSelected != "Tri par type")  {
-            filter.loadedPokemonByOneType(optionSelected);
+            filter.displayPokemonForOneType(optionSelected);
         } else {
             filter.handleSelectAllPokemon(event);
         }
@@ -27,39 +27,18 @@ const filter = {
     //click sur le bouton type d'un pokemon
     handleClickTypePokemon: function(event) {
         const typeSelected = event.target.textContent;
-        filter.loadedPokemonByOneType(typeSelected)
+        filter.displayPokemonForOneType(typeSelected)
     },
 
-    loadedPokemonByOneType: function(type_name) {
-
-        filter.optionSelectedTypes(type_name)
-
-        let fetchOptions = {
-            method: 'GET', 
-            mode: 'cors',
-            cache: 'no-cache'  
-        };
-
-        request = fetch(app.apiRootUrl + '/pokemon/type/'+ type_name, fetchOptions); 
-
-        request.then(
-            function(response) {
-                return response.json();
-            }
-        )
-        .then( 
-            function(jsonResponse) {
-                filter.displayPokemonType(jsonResponse);
-            }
-        )       
-    },
-
-    displayPokemonType: function(listPokemonType) {
+    displayPokemonForOneType: function(optionSelected) {
         filter.displayAllPokemon('none');
+        console.log(optionSelected)
         const allPokemon =  document.querySelectorAll('.wrapper li');
         for(const onePokemon of allPokemon) {
-            for (const onePokemonType of listPokemonType) {
-                if(onePokemon.querySelector('span').textContent.includes(onePokemonType.name)) {
+            const listTypesPokemon = onePokemon.querySelectorAll(".type__pokemon");
+            console.log(listTypesPokemon);
+            for (const onePokemonType of listTypesPokemon) {
+                if(onePokemonType.textContent.includes(optionSelected)) {
                     onePokemon.style.display ="block";
                 }
             }            
