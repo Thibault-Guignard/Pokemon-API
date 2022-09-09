@@ -7,6 +7,7 @@ const app = {
         pokemon.init();
         type.init();
         filter.init();
+        //generation.init();
     },
 }
 

@@ -2,7 +2,6 @@ const type = {
 
     init : function () {
          type.loadedSelectType();
-
     },
 
     loadedSelectType: function() {

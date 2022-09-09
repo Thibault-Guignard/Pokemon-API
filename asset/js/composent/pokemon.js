@@ -56,6 +56,8 @@ const pokemon = {
         const divParent = document.getElementById('display-all-pokemon')
         divParent.append(ulListPokemon);
 
+        //on va maintenant créer le select des générations
+        generation.createSelectGenerationHeader();
     },
 
     createPokemonImage: function(pokemonFragment, onePokemon) {
