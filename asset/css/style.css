@@ -12,6 +12,10 @@ body {
   box-sizing: border-box;
 }
 
+h1 {
+  font-size: 1em;
+}
+
 .barheader,
 footer {
   background-color: #efe3e3;
@@ -197,6 +201,10 @@ img {
   .wrapperList {
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  h1 {
+    font-size: 1.2em;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -206,6 +214,10 @@ img {
 
   .wrapperList {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  h1 {
+    font-size: 2em;
   }
 }
 
