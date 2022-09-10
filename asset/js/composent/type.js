@@ -20,7 +20,6 @@ const type = {
         )
         .then(
             function(jsonResponse) {
-                //on envoie les données recues dans une fonction qui va créer le menu select dans la bar de nav
                 type.createSelectTypeHeader(jsonResponse);
             }
         )       

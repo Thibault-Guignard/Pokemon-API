@@ -5,18 +5,7 @@ const pokemon = {
         pokemon.loadedPokemonInAPI();
     },
 
-    //? sauvegarde
-    // loadedPokemon: function() {
-    //     if ( null !== localStorage.getItem('pokemons')) {
-    //        const listPokemon = JSON.parse(localStorage.getItem('pokemons'));
-    //        pokemon.createUl(listPokemon);
-    //     } else {
-    //         pokemon.loadedPokemonInAPI();
-    //     }
-    // },
-
     loadedPokemonInAPI : function() {
-
         let fetchOptions = {
             method: 'GET',
             mode: 'cors',
@@ -38,8 +27,6 @@ const pokemon = {
     },
 
     createUl: function(pokemonList) {
-        //?sauvegarde
-        //?pokemon.saveInLocalStorage(pokemonList)
         //on crée le ul parent a qui on va mettre la classe wrapper
         const ulListPokemon = document.createElement('ul');
         //on rajoute la class wrapper a cet Ul
@@ -90,7 +77,6 @@ const pokemon = {
             //on le place dans la div
             divType.append(newTypeFragementPokemon);
         }
-        
     },
 
     createPokemonGenaration: function(pokemonFragment, onePokemon) {
@@ -99,11 +85,5 @@ const pokemon = {
         aGeneration.textContent = onePokemon.apiGeneration + "°  Génération"
         aGeneration.dataset.generation = onePokemon.apiGeneration;
         filter.addOnePokemonEventGeneration(aGeneration);
-    }
-
-    // ? sauvegarde en storage
-    // saveInLocalStorage: function(listPokemon) {
-    //     localStorage.setItem("pokemons",JSON.stringify(listPokemon));
-    // }
-    
+    },
 }

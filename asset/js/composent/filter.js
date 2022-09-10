@@ -17,23 +17,20 @@ const filter = {
         selectAllPokemon.addEventListener('click',filter.handleSelectAllPokemon);
     },
 
-    addOnePokemonEventType: function(oneTypePokemon) {
-        oneTypePokemon.addEventListener('click',filter.handleClickOnePokemonType)
+    //click sur le bouton d'un type de pokemon
+    addOnePokemonEventType: function(typeOfOnePokemon) {
+        typeOfOnePokemon.addEventListener('click',filter.handleClickOnePokemonFilter)
     },
     
-    addOnePokemonEventGeneration: function(oneTypePokemon) {
-        oneTypePokemon.addEventListener('click',filter.handleClickOnePokemonGeneration)
+    //click sur le bouton de la génération d'un pokemon
+    addOnePokemonEventGeneration: function(generationOfOnePokemon) {
+        generationOfOnePokemon.addEventListener('click',filter.handleClickOnePokemonFilter)
     },
 
-    handleClickOnePokemonType: function(event) {
+    handleClickOnePokemonFilter: function(event) {
         event.preventDefault();
-        const choiceSelected = event.target.textContent;
-        filter.findTypeAndGeneration(choiceSelected);
-    },
-
-    handleClickOnePokemonGeneration: function(event) {
-        event.preventDefault();
-        const choiceSelected = event.target.dataset.generation;
+        const targetFilter = event.currentTarget;
+        !isNaN(targetFilter.dataset.generation) ? choiceSelected = targetFilter.dataset.generation : choiceSelected = targetFilter.textContent;
         filter.findTypeAndGeneration(choiceSelected);
     },
 
@@ -55,25 +52,17 @@ const filter = {
     },
 
     displayPokemonSelected: function(typeSelected, generationSelected) {
-        console.log(typeSelected, generationSelected);
         filter.displayAllPokemon('none');
-        
-
-    },
-
-
-    displayPokemonForOneType: function(optionSelected) {
-
-        console.log(optionSelected)
-        const allPokemon =  document.querySelectorAll('.wrapper li');
-        for(const onePokemon of allPokemon) {
+        const allPokemon = document.querySelectorAll('.wrapper li');
+        for (const onePokemon of allPokemon) {
             const listTypesPokemon = onePokemon.querySelectorAll(".type__pokemon");
-            console.log(listTypesPokemon);
-            for (const onePokemonType of listTypesPokemon) {
-                if(onePokemonType.textContent.includes(optionSelected)) {
-                    onePokemon.style.display ="block";
+            const generationPokemon = onePokemon.querySelector(".generation").dataset.generation;
+                for (const onePokemonType of listTypesPokemon) {
+                    if ((typeSelected === onePokemonType.textContent || typeSelected === 'Tri par type') 
+                        && (generationSelected === generationPokemon || generationSelected === '0')) {
+                        onePokemon.style.display = 'block';
+                    }
                 }
-            }            
         }
     },
 
@@ -84,22 +73,19 @@ const filter = {
         }
     },
 
-
     handleSelectAllPokemon: function(event) {
         event.preventDefault();
         filter.displayAllPokemon('block');
-        filter.optionSelectedTypes('Tri par type');
+        filter.updateOptionSelected('Tri par type');
+        filter.updateOptionSelected(0);
     },
-
 
     //modification de la valeur par defaut dans le menu select aproprié
     updateOptionSelected: function(choiceSelected) {
         let menuSelected = ""
         isNaN(choiceSelected) ? menuSelected = "type" : menuSelected = "generation";
-
         const selectMenu = document.querySelector('.sort--' + menuSelected);
         selectMenu.querySelector('option[selected]').removeAttribute('selected');
-
         const optionTypes = selectMenu.querySelectorAll('option')
         for(const oneOption of optionTypes) {
             if (oneOption.value == choiceSelected ) {
@@ -107,6 +93,4 @@ const filter = {
             }
         }
     },
-
-
 }
