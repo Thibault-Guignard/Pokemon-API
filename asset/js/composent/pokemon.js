@@ -12,18 +12,18 @@ const pokemon = {
         };
         request = fetch(`${app.apiRootUrl}/pokemon`, fetchOptions); 
         request.then(
-            function(response) {
+            response => {
                 return response.json();
             }
         )
         .then(
-            function(jsonResponse) {
+            jsonResponse => {
                 pokemon.createUl(jsonResponse);
             }
         )
     },
 
-    createUl: (pokemonList) => {
+    createUl: pokemonList => {
         //on crée le ul parent a qui on va mettre la classe wrapper
         const ulListPokemon = document.createElement('ul');
         //on rajoute la class wrapper a cet Ul

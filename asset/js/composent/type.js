@@ -12,18 +12,18 @@ const type = {
         };
         request = fetch(`${app.apiRootUrl}/types`, fetchOptions); 
         request.then(
-            function(response) {
+            response => {
                 return response.json();
             }
         )
         .then(
-            function(jsonResponse) {
+            jsonResponse => {
                 type.createSelectTypeHeader(jsonResponse);
             }
         )       
     },
 
-    createSelectTypeHeader: (listType) => {
+    createSelectTypeHeader: listType => {
         //tri par orde alphabetique en fonction du nom du type
         listType.sort((x,y) => x.name.localeCompare(y.name))
         //on recupere l'emplacement ou on va mettre notre select

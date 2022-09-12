@@ -18,29 +18,29 @@ const filter = {
     },
 
     //click sur le bouton d'un type de pokemon
-    addOnePokemonEventType: (typeOfOnePokemon) => {
+    addOnePokemonEventType: typeOfOnePokemon => {
         typeOfOnePokemon.addEventListener('click',filter.handleClickOnePokemonFilter)
     },
     
     //click sur le bouton de la génération d'un pokemon
-    addOnePokemonEventGeneration: (generationOfOnePokemon) => {
+    addOnePokemonEventGeneration: generationOfOnePokemon => {
         generationOfOnePokemon.addEventListener('click',filter.handleClickOnePokemonFilter)
     },
 
-    handleClickOnePokemonFilter: (event) => {
+    handleClickOnePokemonFilter: event => {
         event.preventDefault();
         const targetFilter = event.currentTarget;
         !isNaN(targetFilter.dataset.generation) ? choiceSelected = targetFilter.dataset.generation : choiceSelected = targetFilter.textContent;
         filter.findTypeAndGeneration(choiceSelected);
     },
 
-    handleSelectPokemonByFilter: (event) => {
+    handleSelectPokemonByFilter: event => {
         event.preventDefault();
         const choiceSelected = event.target.value;
         filter.findTypeAndGeneration(choiceSelected);
     },
 
-    findTypeAndGeneration: (choiceSelected) => {
+    findTypeAndGeneration: choiceSelected => {
         filter.updateOptionSelected(choiceSelected);
         if (isNaN(choiceSelected)) {
             const generationSelect = document.querySelector('.sort--generation').querySelector('option[selected]');
@@ -66,14 +66,14 @@ const filter = {
         });
     },
 
-    displayAllPokemon: (choice) => {
+    displayAllPokemon: choice => {
         const allPokemon =  document.querySelectorAll('.wrapper li');
         for(const onePokemon of allPokemon) {
             onePokemon.style.display = choice;
         }
     },
 
-    handleSelectAllPokemon: (event) =>  {
+    handleSelectAllPokemon: event =>  {
         event.preventDefault();
         filter.displayAllPokemon('block');
         filter.updateOptionSelected('Tri par type');
@@ -81,7 +81,7 @@ const filter = {
     },
 
     //modification de la valeur par defaut dans le menu select aproprié
-    updateOptionSelected: (choiceSelected) => {
+    updateOptionSelected: choiceSelected => {
         let menuSelected = ""
         isNaN(choiceSelected) ? menuSelected = "type" : menuSelected = "generation";
         const selectMenu = document.querySelector('.sort--' + menuSelected);
