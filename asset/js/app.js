@@ -3,7 +3,7 @@ const app = {
 
     apiRootUrl: "https://pokebuildapi.fr/api/v1",
 
-    init: function() {
+    init: ()  => {
         pokemon.init();
         type.init();
         filter.init();
