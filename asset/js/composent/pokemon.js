@@ -2,6 +2,7 @@ const pokemon = {
 
     init : () => {
         pokemon.loadedPokemonInAPI();
+        pokemon.displayPokemon = document.querySelector('#display-all-pokemon');
     },
 
     loadedPokemonInAPI: () => {
@@ -18,29 +19,51 @@ const pokemon = {
         )
         .then(
             jsonResponse => {
-                pokemon.createUl(jsonResponse);
+                pokemon.createListPokemon(jsonResponse);
             }
         )
     },
 
-    createUl: pokemonList => {
-        //on crée le ul parent a qui on va mettre la classe wrapper
-        const ulListPokemon = document.createElement('ul');
-        //on rajoute la class wrapper a cet Ul
-        ulListPokemon.classList.add('wrapper');
+    createListPokemon: pokemonList => {
+        const ulListPokemon = app.drawElement('ul',pokemon.displayPokemon,{
+            className: "wrapper"
+        });
 
         pokemonList.forEach( onePokemon => {
-            const template = document.getElementById('template_pokemon');
-            const pokemonFragment = template.content.cloneNode(true);
-            pokemon.createPokemonImage(pokemonFragment, onePokemon);
-            pokemon.createPokemonName(pokemonFragment, onePokemon);
+            const liOnePokemon = app.drawElement('li',ulListPokemon,{
+                className: "pokemon"
+            });
+            const aPokemon = app.drawElement('a',liOnePokemon,{
+                className: "pokemon__info",
+                href:"#"
+            });
+            app.drawElement('img',aPokemon,{
+                src: onePokemon.image,
+                alt: onePokemon.name
+            })
+            //pokemon.createPokemonImage(pokemonFragment, onePokemon);
+            app.drawElement('span',aPokemon,{
+                className: "name",
+                textContent: `${onePokemon.pokedexId}. ${onePokemon.name}`
+            })
+            //pokemon.createPokemonName(pokemonFragment, onePokemon);
+            const divPokemonDetail = app.drawElement('div',liOnePokemon,{
+                className: "pokemon__detail"
+            });
+            app.drawElement('a',divPokemonDetail,{
+                className: "generation",
+                textContent: `${onePokemon.apiGeneration}° Génération`,
+                href: "#"
+                //dataset: {generation : onePokemon.apiGeneration},
+            });
+            //pokemon.createPokemonGenaration(pokemonFragment, onePokemon);
             pokemon.createPokemonType(pokemonFragment, onePokemon);
-            pokemon.createPokemonGenaration(pokemonFragment, onePokemon);
+
             ulListPokemon.append(pokemonFragment);  
         });
 
-        const divParent = document.getElementById('display-all-pokemon')
-        divParent.append(ulListPokemon);
+        // const divParent = document.getElementById('display-all-pokemon')
+        // divParent.append(ulListPokemon);
 
         //on va maintenant créer le select des générations
         generation.createSelectGenerationHeader();
@@ -49,7 +72,7 @@ const pokemon = {
     createPokemonImage: (pokemonFragment, onePokemon) => {
         const img = pokemonFragment.querySelector('img');
         img.src = onePokemon.image;
-        img.name = onePokemon.name;
+        img.alt = onePokemon.name;
     },
 
     createPokemonName: (pokemonFragment, onePokemon) => {

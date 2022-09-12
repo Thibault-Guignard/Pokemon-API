@@ -221,7 +221,7 @@ img {
   }
 }
 
-.detail {
+.pokemon__detail {
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -233,6 +233,7 @@ img {
   text-align: center;
   display: inline-block;
   width: 8em;
+  color: white;
 }
 
 .list__type {

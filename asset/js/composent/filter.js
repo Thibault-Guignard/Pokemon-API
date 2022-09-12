@@ -54,7 +54,8 @@ const filter = {
     displayPokemonSelected: (typeSelected, generationSelected) => {
         filter.displayAllPokemon('none');
         const allPokemon = document.querySelectorAll('.wrapper li');
-        allPokemon.forEach(onePokemon => {
+        const pokemonFiltred = allPokemon.filter(filter.filterPokemonTypeGeneration);
+         allPokemon.forEach(onePokemon => {
             const listTypesPokemon = onePokemon.querySelectorAll(".type__pokemon");
             const generationPokemon = onePokemon.querySelector(".generation").dataset.generation;
                 listTypesPokemon.forEach(onePokemonType => {
@@ -64,6 +65,7 @@ const filter = {
                 }
                 });     
         });
+
     },
 
     displayAllPokemon: choice => {
@@ -93,4 +95,5 @@ const filter = {
             }
         }
     },
+
 }
