@@ -1,61 +1,62 @@
-const filter = {
+const filterPokemon = {
     
     init: () => {        
-        filter.allSortingEventsInPage();
+        filterPokemon.allSortingEventsInPage();
     },
 
     //création des evenements de filtre dans la page
     allSortingEventsInPage: () => {
         //evenement qui gere le choix d'un type dans le menu select type
         const selectTypes = document.querySelector('.sort--type');
-        selectTypes.addEventListener('change',filter.handleSelectPokemonByFilter);
+        selectTypes.addEventListener('change',filterPokemon.handleSelectPokemonByFilter);
         //evenement qui gere le choix d'une génération dans le menu select génération
         const selectGenerations = document.querySelector('.sort--generation');
-        selectGenerations.addEventListener('change',filter.handleSelectPokemonByFilter);
+        selectGenerations.addEventListener('change',filterPokemon.handleSelectPokemonByFilter);
         //bouton tous les pokemons
         const selectAllPokemon =document.querySelector('.barheader .navheader a')
-        selectAllPokemon.addEventListener('click',filter.handleSelectAllPokemon);
+        selectAllPokemon.addEventListener('click',filterPokemon.handleSelectAllPokemon);
     },
 
     //click sur le bouton d'un type de pokemon
     addOnePokemonEventType: typeOfOnePokemon => {
-        typeOfOnePokemon.addEventListener('click',filter.handleClickOnePokemonFilter)
+        typeOfOnePokemon.addEventListener('click',filterPokemon.handleClickOnePokemonFilter)
     },
     
     //click sur le bouton de la génération d'un pokemon
     addOnePokemonEventGeneration: generationOfOnePokemon => {
-        generationOfOnePokemon.addEventListener('click',filter.handleClickOnePokemonFilter)
+        generationOfOnePokemon.addEventListener('click',filterPokemon.handleClickOnePokemonFilter)
     },
 
     handleClickOnePokemonFilter: event => {
         event.preventDefault();
         const targetFilter = event.currentTarget;
         !isNaN(targetFilter.dataset.generation) ? choiceSelected = targetFilter.dataset.generation : choiceSelected = targetFilter.textContent;
-        filter.findTypeAndGeneration(choiceSelected);
+        filterPokemon.findTypeAndGeneration(choiceSelected);
     },
 
     handleSelectPokemonByFilter: event => {
         event.preventDefault();
         const choiceSelected = event.target.value;
-        filter.findTypeAndGeneration(choiceSelected);
+        console.log(choiceSelected)
+        filterPokemon.findTypeAndGeneration(choiceSelected);
     },
 
     findTypeAndGeneration: choiceSelected => {
-        filter.updateOptionSelected(choiceSelected);
+        filterPokemon.updateOptionSelected(choiceSelected);
         if (isNaN(choiceSelected)) {
             const generationSelect = document.querySelector('.sort--generation').querySelector('option[selected]');
-            filter.displayPokemonSelected(choiceSelected, generationSelect.value)
+            filterPokemon.displayPokemonSelected(choiceSelected, generationSelect.value)
         } else {
             const typeSelect = document.querySelector('.sort--type').querySelector('option[selected]');
-            filter.displayPokemonSelected(typeSelect.value, choiceSelected)
+            filterPokemon.displayPokemonSelected(typeSelect.value, choiceSelected)
         }
     },
 
     displayPokemonSelected: (typeSelected, generationSelected) => {
-        filter.displayAllPokemon('none');
+        filterPokemon.displayAllPokemon('none');
         const allPokemon = document.querySelectorAll('.wrapper li');
-        const pokemonFiltred = allPokemon.filter(filter.filterPokemonTypeGeneration);
-         allPokemon.forEach(onePokemon => {
+
+        allPokemon.forEach(onePokemon => {
             const listTypesPokemon = onePokemon.querySelectorAll(".type__pokemon");
             const generationPokemon = onePokemon.querySelector(".generation").dataset.generation;
                 listTypesPokemon.forEach(onePokemonType => {
@@ -77,9 +78,9 @@ const filter = {
 
     handleSelectAllPokemon: event =>  {
         event.preventDefault();
-        filter.displayAllPokemon('block');
-        filter.updateOptionSelected('Tri par type');
-        filter.updateOptionSelected(0);
+        filterPokemon.displayAllPokemon('block');
+        filterPokemon.updateOptionSelected('Tri par type');
+        filterPokemon.updateOptionSelected(0);
     },
 
     //modification de la valeur par defaut dans le menu select aproprié
